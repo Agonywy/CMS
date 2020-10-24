@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <!--配置sqlSessionFactory-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--数据源-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--mapper.xml位置-->
+        <property name="mapperLocations">
+            <array>
+                <value>classpath*:com/cms/dao/mapper/mappers/**.xml</value>
+            </array>
+        </property>
+        <property name="configuration">
+            <bean class="org.apache.ibatis.session.Configuration">
+                <property name="mapUnderscoreToCamelCase" value="true"/>
+                <!-- 数据库超过25000秒仍未响应则超时 -->
+                <property name="defaultStatementTimeout" value="25000"/>
+                <!--开启缓存支持-->
+                <property name="cacheEnabled" value="true"/>
+                <!--在mybatis中，如果要实现懒加载，必须是如下的配置，两个开关都要设置-->
+                <property name="lazyLoadingEnabled" value="true"/>
+                <property name="aggressiveLazyLoading" value="false"/>
+                <!--可以阻挡不相干的操作触发，实现懒加载-->
+                <property name="lazyLoadTriggerMethods" value=""/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialSize" value="${datasource.initialSize}" />
+        <property name="minIdle" value="${datasource.minIdle}" />
+        <property name="maxActive" value="${datasource.maxActive}" />
+        <!--配置获取连接等待超时的时间-->
+        <property name="maxWait" value="${datasource.maxWait}" />
+        <!--配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒-->
+        <property name="timeBetweenEvictionRunsMillis" value="${datasource.timeBetweenEvictionRunsMillis}" />
+        <!--配置一个连接在池中最小生存的时间，单位是毫秒-->
+        <property name="minEvictableIdleTimeMillis" value="${datasource.minEvictableIdleTimeMillis}" />
+        <property name="validationQuery" value="${datasource.validationQuery}" />
+        <property name="testWhileIdle" value="${datasource.testWhileIdle}" />
+        <property name="testOnBorrow" value="${datasource.testOnBorrow}" />
+        <property name="testOnReturn" value="${datasource.testOnReturn}" />
+        <!--打开PSCache，并且指定每个连接上PSCache的大小-->
+        <property name="poolPreparedStatements" value="${datasource.poolPreparedStatements}" />
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="${datasource.maxPoolPreparedStatementPerConnectionSize}" />
+        <!--开启Druid的监控统计功能,StatFilter可以和其他的Filter配置使用-->
+        <property name="filters" value="${datasource.filters}" />
+        <!--通过connectProperties属性来打开mergeSql功能；慢SQL记录-->
+        <property name="connectionProperties" value="${datasource.connectionProperties}" />
+        <!--合并多个DruidDataSource的监控数据-->
+        <property name="useGlobalDataSourceStat" value="${datasource.useGlobalDataSourceStat}" />
+        <!--监控统计拦截的filters-->
+        <property name="proxyFilters">
+            <list>
+                <ref bean="stat-filter"/>
+            </list>
+        </property>
+    </bean>
+
+    <!--mapper扫描接口-->
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.cms.dao.mapper"/>
+    </bean>
+
+    <!--事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="rollbackOnCommitFailure" value="true"/>
+    </bean>
+
+    <!--  使用@Transactional进行声明式事务管理需要声明下面这行  -->
+    <tx:annotation-driven proxy-target-class="true"/>
+
+    <!--慢sql记录-->
+    <bean id="stat-filter" class="com.alibaba.druid.filter.stat.StatFilter">
+        <property name="mergeSql" value="true"/>
+        <property name="slowSqlMillis" value="10000" />
+        <property name="logSlowSql" value="true" />
+    </bean>
+</beans>

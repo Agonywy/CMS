@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.cms</groupId>
+  <artifactId>cms-pro</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+    <module>cms-portal</module>
+    <module>cms-service</module>
+    <module>cms-dao</module>
+    <module>cms-context</module>
+    <module>com-core</module>
+  </modules>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <springVersion>4.3.20.RELEASE</springVersion>
+    <mybatisVersion>3.4.1</mybatisVersion>
+    <!--mybatis和spring集成-->
+    <mybatisSpringVersion>1.3.0</mybatisSpringVersion>
+    <mybatisTypehandlersJsr310Version>1.0.1</mybatisTypehandlersJsr310Version>
+    <servletVersion>9.0.4</servletVersion>
+    <aspectjweaverVersion>1.7.3</aspectjweaverVersion>
+    <logbackVersion>1.1.2</logbackVersion>
+    <mysqlVersion>8.0.13</mysqlVersion>
+    <guavaVersion>20.0</guavaVersion>
+    <commonsLang3Version>3.5</commonsLang3Version>
+    <commonsCollectionsVersion>3.2.1</commonsCollectionsVersion>
+    <jodaTimeVersion>2.3</jodaTimeVersion>
+    <hashidsVersion>1.0.1</hashidsVersion>
+    <commonsNetVersion>3.1</commonsNetVersion>
+    <commonsFileupload>1.3.3</commonsFileupload>
+    <commonsIoVersion>2.0.1</commonsIoVersion>
+    <pagehelperVersion>4.2.1</pagehelperVersion>
+    <mybatisPaginatorVersion>1.2.17</mybatisPaginatorVersion>
+    <jsqlparserVersion>0.9.4</jsqlparserVersion>
+    <commonsCodec>1.10</commonsCodec>
+    <commonsLangVersion>2.6</commonsLangVersion>
+    <commonsLoggingVersion>1.1.1</commonsLoggingVersion>
+    <zxingVersion>2.1</zxingVersion>
+    <gsonVersion>2.3.1</gsonVersion>
+    <hamcrestCoreVersion>1.3</hamcrestCoreVersion>
+    <jedisVersion>2.9.0</jedisVersion>
+    <flywayVersion>4.1.0</flywayVersion>
+    <lombokVersion>1.16.20</lombokVersion>
+    <validatorVersion>5.4.0.Final</validatorVersion>
+    <mapstructVersion>1.2.0.Final</mapstructVersion>
+    <kaptchaVersion>2.3.2</kaptchaVersion>
+    <druidVersion>1.0.7</druidVersion>
+    <log4jVersion>1.2.17</log4jVersion>
+    <shiroVersion>1.3.2</shiroVersion>
+    <freemarkerVersion>2.3.23</freemarkerVersion>
+    <fastjsonVersion>1.2.55</fastjsonVersion>
+    <ehcacheCoreVersion>2.6.6</ehcacheCoreVersion>
+    <mybatisEhcacheVersion>1.1.0</mybatisEhcacheVersion>
+    <luceneVersion>4.6.1</luceneVersion>
+    <fasterxmlUuidVersion>3.1.4</fasterxmlUuidVersion>
+  </properties>
+
+  <dependencies>
+    <!--servlet-->
+    <dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-servlet-api</artifactId>
+      <version>${servletVersion}</version>
+    </dependency>
+    <!--springMvc-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>${springVersion}</version>
+    </dependency>
+    <!--Java对象（POJO）和 XML 文档之间来回转换。-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-oxm</artifactId>
+      <version>${springVersion}</version>
+    </dependency>
+    <!--spring操作jdbc-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>${springVersion}</version>
+    </dependency>
+    <!--spring AspectJ-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aspects</artifactId>
+      <version>${springVersion}</version>
+    </dependency>
+    <!--包含支持缓存Cache（ehcache）、JCA、JMX、 邮件服务（Java Mail、COS Mail）、任务计划Scheduling（Timer、Quartz）方面的类-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context-support</artifactId>
+      <version>${springVersion}</version>
+    </dependency>
+    <!--spring 事务管理-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+      <version>${springVersion}</version>
+    </dependency>
+    <!--aop-->
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>${aspectjweaverVersion}</version>
+    </dependency>
+    <!--mybatis-->
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis-spring</artifactId>
+      <version>${mybatisSpringVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>${mybatisVersion}</version>
+    </dependency>
+    <!--Mybatis支持JSR310标准-->
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis-typehandlers-jsr310</artifactId>
+      <version>${mybatisTypehandlersJsr310Version}</version>
+    </dependency>
+    <!--mysql-->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>${mysqlVersion}</version>
+    </dependency>
+    <!--druid数据库连接池-->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>${druidVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>${log4jVersion}</version>
+    </dependency>
+<!-- 整合Freemarker模板引擎   -->
+    <!--freemarker-->
+    <dependency>
+      <groupId>org.freemarker</groupId>
+      <artifactId>freemarker</artifactId>
+      <version>${freemarkerVersion}</version>
+    </dependency>
+  </dependencies>
+
+
+  <build>
+    <resources>
+      <!-- mapper.xml文件在java目录下 -->
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.xml</include>
+        </includes>
+      </resource>
+      <!-- mapper.xml文件在resources目录下-->
+    </resources>
+  </build>
+</project>
