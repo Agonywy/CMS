@@ -160,6 +160,16 @@
       <artifactId>flyway-core</artifactId>
       <version>${flywayVersion}</version>
     </dependency>
+    <dependency>
+      <groupId>redis.clients</groupId>
+      <artifactId>jedis</artifactId>
+      <version>${jedisVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-redis</artifactId>
+      <version>1.6.2.RELEASE</version>
+    </dependency>
   </dependencies>
 
 

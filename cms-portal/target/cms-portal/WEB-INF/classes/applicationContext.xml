@@ -26,4 +26,5 @@
 
     <!--引入其他-->
     <import resource="classpath:applicationContext-datasource.xml"/>
+    <import resource="classpath:applicationContext-redis.xml"/>
 </beans>
