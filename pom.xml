@@ -170,6 +170,12 @@
       <artifactId>spring-data-redis</artifactId>
       <version>1.6.2.RELEASE</version>
     </dependency>
+    <!--验证码: kaptcha-->
+    <dependency>
+      <groupId>com.github.penggle</groupId>
+      <artifactId>kaptcha</artifactId>
+      <version>${kaptchaVersion}</version>
+    </dependency>
   </dependencies>
 
 
