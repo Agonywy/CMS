@@ -188,6 +188,14 @@
       <artifactId>slf4j-log4j12</artifactId>
       <version>1.7.25</version>
     </dependency>
+
+    <!--lombok-->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombokVersion}</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
 
 
