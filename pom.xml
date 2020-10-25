@@ -70,12 +70,19 @@
       <groupId>org.apache.tomcat</groupId>
       <artifactId>tomcat-servlet-api</artifactId>
       <version>${servletVersion}</version>
+      <scope>provided</scope>
     </dependency>
     <!--springMvc-->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
       <version>${springVersion}</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>commons-logging</artifactId>
+          <groupId>commons-logging</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <!--Java对象（POJO）和 XML 文档之间来回转换。-->
     <dependency>
@@ -107,12 +114,6 @@
       <artifactId>spring-tx</artifactId>
       <version>${springVersion}</version>
     </dependency>
-    <!--aop-->
-    <dependency>
-      <groupId>org.aspectj</groupId>
-      <artifactId>aspectjweaver</artifactId>
-      <version>${aspectjweaverVersion}</version>
-    </dependency>
     <!--mybatis-->
     <dependency>
       <groupId>org.mybatis</groupId>
@@ -142,11 +143,6 @@
       <artifactId>druid</artifactId>
       <version>${druidVersion}</version>
     </dependency>
-    <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>${log4jVersion}</version>
-    </dependency>
 <!-- 整合Freemarker模板引擎   -->
     <!--freemarker-->
     <dependency>
@@ -168,13 +164,29 @@
     <dependency>
       <groupId>org.springframework.data</groupId>
       <artifactId>spring-data-redis</artifactId>
-      <version>1.6.2.RELEASE</version>
+      <version>1.8.16.RELEASE</version>
     </dependency>
     <!--验证码: kaptcha-->
     <dependency>
       <groupId>com.github.penggle</groupId>
       <artifactId>kaptcha</artifactId>
       <version>${kaptchaVersion}</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>javax.servlet-api</artifactId>
+          <groupId>javax.servlet</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.25</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.7.25</version>
     </dependency>
   </dependencies>
 
