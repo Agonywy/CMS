@@ -42,7 +42,7 @@
     <mybatisPaginatorVersion>1.2.17</mybatisPaginatorVersion>
     <jsqlparserVersion>0.9.4</jsqlparserVersion>
     <commonsCodec>1.10</commonsCodec>
-    <commonsLangVersion>2.6</commonsLangVersion>
+    <commonsLangVersiosn>2.6</commonsLangVersiosn>
     <commonsLoggingVersion>1.1.1</commonsLoggingVersion>
     <zxingVersion>2.1</zxingVersion>
     <gsonVersion>2.3.1</gsonVersion>
@@ -195,6 +195,38 @@
       <artifactId>lombok</artifactId>
       <version>${lombokVersion}</version>
       <scope>provided</scope>
+    </dependency>
+
+    <!--ehcache-->
+    <dependency>
+      <groupId>net.sf.ehcache</groupId>
+      <artifactId>ehcache-core</artifactId>
+      <version>${ehcacheCoreVersion}</version>
+      <type>pom</type>
+    </dependency>
+    <!--shiro-->
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-core</artifactId>
+      <version>${shiroVersion}</version>
+    </dependency>
+    <!-- shiro的缓存包 -->
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-ehcache</artifactId>
+      <version>${shiroVersion}</version>
+    </dependency>
+    <!-- shiro与Spring的集成包 -->
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-spring</artifactId>
+      <version>${shiroVersion}</version>
+    </dependency>
+    <!-- fastJson -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>${fastjsonVersion}</version>
     </dependency>
   </dependencies>
 

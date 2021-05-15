@@ -10,7 +10,6 @@ import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
-import java.util.logging.Logger;
 
 /**
  * @author 29237
@@ -21,12 +20,16 @@ public class LoginController {
     @Resource
     private Producer captchaProducer;
 
+    /**
+     * 直接跳转到页面
+     * @return
+     */
     @GetMapping("login.do")
     public String toLogin(){
         return "/admin/login";
     }
     /**测试请求验证码*/
-    @GetMapping("captch.do")
+    @GetMapping("captcha.do")
     public void daCaptcha(HttpServletResponse httpServletResponse){
         //先生成文本内容，然后根据文本串去生成验证码图片
         String text = captchaProducer.createText();
@@ -38,4 +41,8 @@ public class LoginController {
             log.error("slf4j日志:验证码生成失败了");
         }
     }
+
+
+
+
 }
